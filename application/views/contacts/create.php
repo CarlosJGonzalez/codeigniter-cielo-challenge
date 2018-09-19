@@ -83,7 +83,8 @@ jQuery( document ).ready(function () {
       var email = jQuery( "#email" ).val();
       var favcolor = jQuery( "#favcolor" ).val();
 
-	  return validating();
+	  if(!validating() === false) 
+		return;
 	  
       jQuery.ajax({
         url : "<?=base_url();?>contacts/new",
