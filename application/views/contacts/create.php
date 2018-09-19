@@ -83,6 +83,8 @@ jQuery( document ).ready(function () {
       var email = jQuery( "#email" ).val();
       var favcolor = jQuery( "#favcolor" ).val();
 
+	  return validating();
+	  
       jQuery.ajax({
         url : "<?=base_url();?>contacts/new",
         type : "POST",
@@ -106,4 +108,38 @@ jQuery( document ).ready(function () {
       });
     }); 
 });
+
+function validating()
+{
+	var strmsg='';
+	var fields = [];
+	if( jQuery.trim(jQuery( "#name" ).val()) == '' )   
+		fields.push('Name is required');
+	
+	if( jQuery( "#dob" ).val() == '' || jQuery( "#dob" ).val() === null)   
+		fields.push('D.O.B. is required');
+
+	if( jQuery( "#email" ).val() == '' || jQuery( "#email" ).val() === null )            
+		fields.push("Email is required");
+
+	 if(isValidDate(jQuery( "#dob" ).val()) == false){
+		fields.push("Valid Date format: mm/dd/yyyy");
+	 }
+
+	if( fields.length>0 ){
+		for(i=0; i<fields.length; i++)
+		{
+			strmsg +=fields[i]+'<br />';
+		}
+		jQuery( "#message" ).html('<div class="added">'+strmsg+'</div>');
+		jQuery( "#message" ).show('slow').delay(2000).hide(1500, function(){
+			jQuery( ".added" ).remove();
+		});
+		fields.length=0;
+		event.preventDefault();
+		return false;
+	}else{
+		return true;
+	}
+}
 </script>	
