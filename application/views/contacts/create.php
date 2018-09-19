@@ -83,7 +83,7 @@ jQuery( document ).ready(function () {
       var email = jQuery( "#email" ).val();
       var favcolor = jQuery( "#favcolor" ).val();
 
-	  if(!validating() === false) 
+	  if(validating() === false) 
 		return;
 	  
       jQuery.ajax({
