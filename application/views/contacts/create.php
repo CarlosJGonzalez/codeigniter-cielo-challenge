@@ -92,7 +92,7 @@ jQuery( document ).ready(function () {
         data : {"name" : name, "dob" : dob, "email": email,  "favcolor": favcolor},
           success: function (data){
           	var res=JSON.parse(data);
-            if( res.response == 'true'){
+            if( res.response === true){
             	jQuery( "#frmcreate" )[0].reset();
             }
             jQuery( "#message" ).html('<div class="added">'+res.message+'</div>');           
