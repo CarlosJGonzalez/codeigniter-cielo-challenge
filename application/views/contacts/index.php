@@ -9,7 +9,7 @@
 			        <div class="main">
 			                <?php echo $contact['dob']; ?>
 			        </div>
-			        <p><a href="<?=base_url();?>contacts/<?=$contact['slug']; ?>">View contact</a></p>
+			        <p><a href="<?=base_url();?>contacts/<?=$contact['id']; ?>">View contact</a></p>
 				</div>
 		<?php 
 				endforeach;

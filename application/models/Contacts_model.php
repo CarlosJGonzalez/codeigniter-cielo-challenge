@@ -15,7 +15,7 @@ class Contacts_model extends CI_model{
 			return $query->result_array();
 		}
 
-		$query = $this->db->get_where('contacts', array('slug' => $slug));
+		$query = $this->db->get_where('contacts', array('id' => $slug));
 		return $query->row_array();
 
 	}
