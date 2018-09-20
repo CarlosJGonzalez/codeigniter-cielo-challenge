@@ -39,12 +39,13 @@ class Contacts_model extends CI_model{
 			'slug' => $slug
 		);
 
+		$message = "Success! The contact was created";
 		$result = $this->db->insert('contacts', $data);
-		if( !$result)
+		if( !$result )
 		{
-			echo "The contact was not created.";
+			$message = "The contact was not created.";
 		}
-		return $result;
+		return array('response'=>$result, 'message'=>$message);
 	}
 
 	public function get_contact($slug = FALSE)

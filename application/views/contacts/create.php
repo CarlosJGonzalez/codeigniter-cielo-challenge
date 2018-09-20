@@ -94,10 +94,10 @@ jQuery( document ).ready(function () {
           	var res=JSON.parse(data);
             if( res.response == 'true'){
             	jQuery( "#frmcreate" )[0].reset();
-                jQuery( "#message" ).html('<div class="added">Success! Contact was created!</div>');
+                jQuery( "#message" ).html('<div class="added">'+res.message+'</div>');
                 //document.location.href="<?php echo base_url();?>contacts";
             }else{
-                jQuery( "#message" ).html('<div class="added">Fail! Contact was not created.</div>');
+                jQuery( "#message" ).html('<div class="added">'+res.message+'</div>');
             }
             jQuery( "#message" ).show('slow').delay(2000).hide(1500, function(){
                 jQuery( ".added" ).remove();

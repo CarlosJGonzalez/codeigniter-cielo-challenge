@@ -61,14 +61,12 @@ class Contacts extends CI_Controller
 		$this->form_validation->set_rules('dob', 'D.O.B.', 'required');
 		$this->form_validation->set_rules('email', 'Email Address', 'trim|required|valid_email|is_unique[contacts.email]');	
 		
-		$response = array('response'=>'false');	
-
-		if($this->form_validation->run() === TRUE)
+		$res = $this->form_validation->run();
+		if($res === TRUE)
 		{
-			$res = $this->contacts_model->set_contact();	
-			if($res === TRUE){
-				$response = array('response'=>'true');
-			}			
+			$response = $this->contacts_model->set_contact();				
+		}else{
+			$response = array('response'=>'false', 'message'=>$this->form_validation->error_string());
 		}
 		echo json_encode($response);
 	}
